@@ -21,14 +21,42 @@ const UpdateMovieForm = props => {
   const changeHandler = e => {
     e.persist();
     setMovie({
-        ...movie,
-        [e.target.name]: e.target.value
-    })
+      ...movie,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const starsChangeHandler = (e, i) => {
+    e.persist();
+    let starArray = [...movie.stars];
+    starArray[i] = e.target.value;
+    setMovie({
+      ...movie, //keeps previous movies
+      stars: starArray
+    });
   };
 
   const submitHandler = e => {
     console.log("submit pressed");
     e.preventDefault();
+    axios
+      .put(`http://localhost:5000/api/movies/${movie.id}`, movie)
+      .then(res => {
+        console.log(res);
+        setMovie(initialMovie);
+        let tmp = props.movies.map(movie => {
+          if (`${movie.id}` === props.match.params.id) {
+            return res.data;
+          } else {
+            return movie;
+          }
+        });
+        props.updateMovies(tmp);
+        props.history.push("/");
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
   return (
     <div>
@@ -65,14 +93,14 @@ const UpdateMovieForm = props => {
           />
         </label>
         <label className="stars">
-          Movie Stars:
-          {movie.stars.map(star => {
+          Actors:
+          {movie.stars.map((star, i) => {
             return (
               <input
                 type="text"
                 name="stars"
-                onChange={changeHandler}
-                placeholder="Stars"
+                onChange={e => starsChangeHandler(e, i)}
+                placeholder="Actor Name"
                 value={star}
               />
             );

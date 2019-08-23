@@ -19,7 +19,7 @@ const App = () => {
       .get("http://localhost:5000/api/movies")
       .then(res => {
         console.log(res.data);
-        setMovies(res.data)
+        setMovies(res.data);
       })
       .catch(err => {
         console.log(err);
@@ -28,7 +28,7 @@ const App = () => {
 
   return (
     <>
-      <SavedList list={savedList} />
+      <SavedList list={savedList} updateMovies={setMovies} movies={movies} />
       <Route exact path="/" component={MovieList} />
       <Route
         path="/movies/:id"

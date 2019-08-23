@@ -3,8 +3,8 @@ import axios from "axios";
 import MovieCard from "./MovieCard";
 export default class Movie extends React.Component {
   constructor(props) {
-    console.log("movie", props)
-    
+    console.log("movie", props);
+
     super(props);
     this.state = {
       movie: null
@@ -34,7 +34,7 @@ export default class Movie extends React.Component {
   };
 
   render() {
-    console.log("movie state", this)
+    console.log("movie state", this);
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
     }
@@ -45,8 +45,16 @@ export default class Movie extends React.Component {
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>
-        <button onClick={() => this.props.history.push(`/update-movie/${this.props.match.params.id}`)}
-        className="md-button">Edit Movie</button>
+        <button
+          onClick={() =>
+            this.props.history.push(
+              `/update-movie/${this.props.match.params.id}`
+            )
+          }
+          className="md-button"
+        >
+          Edit Movie
+        </button>
       </div>
     );
   }
