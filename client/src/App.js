@@ -19,6 +19,7 @@ const App = () => {
       .get("http://localhost:5000/api/movies")
       .then(res => {
         console.log(res.data);
+        setMovies(res.data)
       })
       .catch(err => {
         console.log(err);

@@ -4,6 +4,7 @@ import MovieCard from "./MovieCard";
 export default class Movie extends React.Component {
   constructor(props) {
     console.log("movie", props)
+    
     super(props);
     this.state = {
       movie: null
@@ -33,6 +34,7 @@ export default class Movie extends React.Component {
   };
 
   render() {
+    console.log("movie state", this)
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
     }
