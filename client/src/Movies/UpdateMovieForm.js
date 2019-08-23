@@ -19,7 +19,11 @@ const UpdateMovieForm = props => {
   }, [props.movies, props.match.params.id]);
 
   const changeHandler = e => {
-    console.log("I AM CHANGING");
+    e.persist();
+    setMovie({
+        ...movie,
+        [e.target.name]: e.target.value
+    })
   };
 
   const submitHandler = e => {
