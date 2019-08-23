@@ -8,7 +8,8 @@ const initialMovie = {
     stars: [],
 }
 
-const UpdateMovieForm = () => {
+const UpdateMovieForm = props => {
+    console.log(props)
 const [ movie, setMovie ] = useState(initialMovie)
 
     return(
