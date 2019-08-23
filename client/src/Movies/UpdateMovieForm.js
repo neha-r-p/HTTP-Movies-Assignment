@@ -50,29 +50,31 @@ const UpdateMovieForm = props => {
             value={movie.director}
           />
         </label>
-<label>Metascore:
-    <input
-          type="number"
-          name="metascore"
-          onChange={changeHandler}
-          placeholder="Metascore"
-          value={movie.metascore}
-        />
-</label>
-        <label>Movie Stars:
-           {movie.stars.map(star => {
-          return (
-            <input
-              type="text"
-              name="stars"
-              onChange={changeHandler}
-              placeholder="Stars"
-              value={star}
-            />
-          );
-        })} 
+        <label className="metascore">
+          Metascore:
+          <input
+            type="number"
+            name="metascore"
+            onChange={changeHandler}
+            placeholder="Metascore"
+            value={movie.metascore}
+          />
         </label>
-        
+        <label className="stars">
+          Movie Stars:
+          {movie.stars.map(star => {
+            return (
+              <input
+                type="text"
+                name="stars"
+                onChange={changeHandler}
+                placeholder="Stars"
+                value={star}
+              />
+            );
+          })}
+        </label>
+
         <button>Update</button>
       </form>
     </div>

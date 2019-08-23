@@ -11,9 +11,29 @@ form {
     max-width: 500px;
     font-size: 16px;
 
+    label {
+        margin: 0 auto;
+        input{
+        margin: 10px;
+    } 
+    }
+   
+    .metascore {
+        input {
+            width: 50px;
+        }
+    }
+    .stars {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+    }
+
     button{
         width: 100px;
         height: 25px;
         border-radius: 7px;
+        font-size: 16px;
+        margin: 0 auto;
     }
 }
